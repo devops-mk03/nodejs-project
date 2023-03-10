@@ -1,15 +1,20 @@
-def registry = 'https://valaxy02.jfrog.io'
-def imageName = 'valaxy02.jfrog.io/nodejs-docker/demo-nodejs'
+def registry = 'https://devopshunger.jfrog.io'
+def imageName = 'https://devopshunger.jfrog.io/dockernodejs1-docker/demo-nodejs'
 def version   = '1.0.2'
 pipeline{
     agent {
         node {
-            label "valaxy"
+            label "slave-node"
         }
     }
-    tools {nodejs 'nodejs-16'}
+    tools {nodejs 'nodejs'}
 
     stages {
+        stage ("Clone the code"){
+            steps{
+                git branch: 'main', url: 'https://github.com/devops-mk03/nodejs-project.git'
+            }
+        }
         stage('build') {
             steps{
                 echo "------------ build started ---------"
@@ -47,12 +52,12 @@ stage(" Docker Build ") {
             }
         }
     }
-            stage('Deployment') {
-            steps {
-                echo '<--------------- deployment started  --------------->'
-                sh './deploy.sh'
-                echo '<------------- deployment stopped  --------------->'
-            }
-        }  
+          //  stage('Deployment') {
+           // steps {
+              //  echo '<--------------- deployment started  --------------->'
+              //  sh './deploy.sh'
+              //  echo '<------------- deployment stopped  --------------->'
+           // }
+        //}  
     }
-    }
+}
