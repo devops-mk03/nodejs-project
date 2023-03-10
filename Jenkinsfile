@@ -1,5 +1,5 @@
 def registry = 'https://devopshunger.jfrog.io'
-def imageName = 'https://devopshunger.jfrog.io/dockernodejs1-docker/demo-nodejs'
+def imageName = 'devopshunger.jfrog.io/dockernodejs1-docker/demo-nodejs'
 def version   = '1.0.2'
 pipeline{
     agent {
