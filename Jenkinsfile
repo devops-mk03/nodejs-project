@@ -7,7 +7,7 @@ pipeline{
             label "slave-node"
         }
     }
-    tools {nodejs 'nodejs'}
+    tools {nodejs 'Nodejs'}
 
     stages {
         stage ("Clone the code"){
